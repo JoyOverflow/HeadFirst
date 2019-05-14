@@ -12,8 +12,24 @@
         <activity android:name=".MainActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN"/>
-
                 <category android:name="android.intent.category.LAUNCHER"/>
+            </intent-filter>
+        </activity>
+
+        <!--为活动指定友好标签（显示在屏幕顶部）-->
+        <!--若无此设置则默认使用应用名称-->
+        <activity android:name=".ReceiveActivity"
+                  android:label="@string/title_receive">
+            <!--意图过滤器设置(表示可接收隐式意图)-->
+            <intent-filter>
+                <!--可以处理的意图动作action.SEND-->
+                <action android:name="android.intent.action.SEND"/>
+                <!--包含类别DEFAULT,向系统表明它可由隐式意图来启动-->
+                <category android:name="android.intent.category.DEFAULT"/>
+                <!--当前活动能处理的数据类型-->
+                <data android:mimeType="text/plain"/>
+                <!--&lt;!&ndash;可处理任何数据类型&ndash;&gt;-->
+                <!--<data android:mimeType="*/*"/>-->
             </intent-filter>
         </activity>
     </application>
