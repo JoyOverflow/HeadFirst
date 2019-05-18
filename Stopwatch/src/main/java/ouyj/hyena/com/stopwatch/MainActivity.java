@@ -8,14 +8,27 @@ import android.widget.TextView;
 
 public class MainActivity extends AppCompatActivity {
 
-
+    //当前的秒数
     private int seconds = 0;
+    //是否按下计时按钮
     private boolean running;
+    //如果活动被电话中断时中止计数
+    private boolean wasRunning;
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+
+        //当有旋转前的保存数据时恢复它
+        if (savedInstanceState != null) {
+            seconds = savedInstanceState.getInt("seconds");
+            running = savedInstanceState.getBoolean("running");
+            wasRunning = savedInstanceState.getBoolean("wasRunning");
+        }
+        //启动计数器
+        runTimer();
     }
 
     /**
@@ -40,7 +53,7 @@ public class MainActivity extends AppCompatActivity {
         }
     }
     /**
-     * 不断循环调用
+     * 只需调用一次，便会不断循环调用
      */
     private void runTimer() {
 
@@ -82,6 +95,29 @@ public class MainActivity extends AppCompatActivity {
 
         outState.putInt("seconds", seconds);
         outState.putBoolean("running", running);
-        //outState.putBoolean("wasRunning", wasRunning);
+        outState.putBoolean("wasRunning", wasRunning);
+    }
+
+    /**
+     * 活动被转后台（不可见）或失去焦点（仍可见）时都会调用
+     */
+    @Override
+    protected void onPause() {
+        super.onPause();
+        //将当前秒表是否在运行（状态）保存起来，供活动继续时恢复
+        wasRunning = running;
+        //当前暂停秒表的计数
+        running = false;
+    }
+    /**
+     * 活动从后台移至前台（变为可见）或重获焦点时都会调用
+     */
+    @Override
+    protected void onResume() {
+        super.onResume();
+        //如果之前秒表是运行的那么恢复运行
+        if (wasRunning) {
+            running = true;
+        }
     }
 }
