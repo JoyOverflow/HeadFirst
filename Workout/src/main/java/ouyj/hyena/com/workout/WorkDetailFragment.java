@@ -2,6 +2,7 @@ package ouyj.hyena.com.workout;
 
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
+import android.support.v4.app.FragmentTransaction;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -53,8 +54,26 @@ public class WorkDetailFragment extends Fragment {
     @Override
     public void onCreate(Bundle savedInstanceState){
         super.onCreate(savedInstanceState);
+
+        //恢复旋转前保存的数据
+        //设被旋转片段事务会成功重放，无需把秒表片段重新加载
         if (savedInstanceState != null) {
             workId = savedInstanceState.getLong("workoutId");
+        }
+        else{
+            //片段第一次创建（替换片段中的片段）
+
+            //创建片段实例
+            WatchFragment watchFragment = new WatchFragment();
+            //启动片段事务（此片段管理器与父片段关联而不与活动关联）
+            FragmentTransaction ft = getChildFragmentManager().beginTransaction();
+            //替换片段并把它增加到后退堆栈
+            ft.replace(R.id.stopwatch_container, watchFragment);
+            ft.addToBackStack(null);
+            //实现谈入谈出效果
+            ft.setTransition(FragmentTransaction.TRANSIT_FRAGMENT_FADE);
+            //提交事务
+            ft.commit();
         }
     }
     /**
