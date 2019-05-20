@@ -9,6 +9,7 @@
           <set>
             <option value="$PROJECT_DIR$" />
             <option value="$PROJECT_DIR$/BeerAdviser" />
+            <option value="$PROJECT_DIR$/BitPizzas" />
             <option value="$PROJECT_DIR$/Starbuzz" />
             <option value="$PROJECT_DIR$/Stopwatch" />
             <option value="$PROJECT_DIR$/Workout" />

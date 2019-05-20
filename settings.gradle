@@ -1,1 +1,1 @@
-include ':app', ':BeerAdviser', ':Stopwatch', ':Starbuzz', ':Workout'
+include ':app', ':BeerAdviser', ':Stopwatch', ':Starbuzz', ':Workout', ':BitPizzas'
