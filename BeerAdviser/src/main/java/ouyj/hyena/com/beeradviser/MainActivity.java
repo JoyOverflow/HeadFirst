@@ -53,13 +53,11 @@ public class MainActivity extends AppCompatActivity {
         Intent intent;
         switch (view.getId()) {
             case R.id.send1:
-
                 //(1)创建意图来启动指定活动（显式）
                 intent = new Intent(this,ReceiveActivity.class);
-                //增加额外信息（键为接收活动的常量）
+                //附加额外信息（键为接收活动所定义的常量）
                 intent.putExtra(ReceiveActivity.EXTRA_MESSAGE,message);
                 startActivity(intent);
-
                 break;
             case R.id.send2:
 
@@ -67,19 +65,17 @@ public class MainActivity extends AppCompatActivity {
                 intent = new Intent(Intent.ACTION_SEND);
                 //目标活动需能处理此类型的数据
                 intent.setType("text/plain");
-                //传递数据
+                //附加数据
                 //EXTRA_SUBJECT表示发送的是消息主题,EXTRA_TEXT表示消息内容
                 intent.putExtra(Intent.EXTRA_SUBJECT, "消息的主题");
                 intent.putExtra(Intent.EXTRA_TEXT, message);
+                //设置活动选择器标题（从字串资源文件中获取字串值）
 
-
-                //设置选择器标题（从字串资源文件中获取字串值）
-                String title = getString(R.string.chooser);
                 //显示目前系统内能接收此意图的活动选择框（传入自己创建的意图,返回一个封装的选择器意图）
+                String title = getString(R.string.chooser);
                 Intent chosenIntent = Intent.createChooser(intent, title);
                 //启动被用户选择的活动（它能处理此意图）
                 startActivity(chosenIntent);
-
                 break;
         }
     }

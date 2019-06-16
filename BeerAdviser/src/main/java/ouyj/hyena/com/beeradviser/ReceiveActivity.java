@@ -13,7 +13,7 @@ public class ReceiveActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_receive);
 
-        //获得传递过来的意图并取出数据
+        //获得传递过来的意图并按字串方式取出数据
         Intent intent = getIntent();
         String message = intent.getStringExtra(EXTRA_MESSAGE);
         //判断字串是否为空

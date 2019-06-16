@@ -2,7 +2,10 @@
     <string name="app_name">BeerAdviser</string>
 
     <string name="hint">请输入！</string>
-    <string name="send">Send Message</string>
+    <string name="send1">发送显示意图</string>
+    <string name="send2">发送隐式意图</string>
+
+
     <string name="chooser">翻谁的牌子呢！？</string>
     <string name="title_receive">接收到意图</string>
     <string name="find_beer">Find Beer!</string>

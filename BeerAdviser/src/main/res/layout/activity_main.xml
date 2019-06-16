@@ -55,7 +55,7 @@
         android:layout_alignStart="@id/message"
         android:layout_below="@id/message"
         android:onClick="onClickSend"
-        android:text="@string/send"/>
+        android:text="@string/send1"/>
     <Button
         android:id="@+id/send2"
         android:layout_width="wrap_content"
@@ -63,5 +63,5 @@
         android:layout_below="@+id/message"
         android:layout_toEndOf="@+id/send1"
         android:onClick="onClickSend"
-        android:text="@string/send"/>
+        android:text="@string/send2"/>
 </RelativeLayout>
