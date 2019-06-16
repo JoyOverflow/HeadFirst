@@ -25,12 +25,11 @@ public class MainActivity extends AppCompatActivity {
      * @param view
      */
     public void onClickFind(View view) {
-
-        //查找视图的引用
-        TextView brands =  findViewById(R.id.brands);
+        //查找文本视图引用
+        TextView brands =  findViewById(R.id.txtBrands);
 
         //获取列表框的选中项（将Object转换为String）
-        Spinner color = findViewById(R.id.color);
+        Spinner color = findViewById(R.id.lstColor);
         String beerType = String.valueOf(color.getSelectedItem());
 
         //根据颜色得到动态的啤酒集合
@@ -43,7 +42,7 @@ public class MainActivity extends AppCompatActivity {
             sb.append(brand).append('\n');
         }
         //设置文本显示视图的文本
-        brands.setText(sb);
+        brands.setText(sb.toString());
     }
     public void onClickSend(View view) {
 

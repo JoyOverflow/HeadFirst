@@ -12,7 +12,7 @@
 
     <!--绑定字串数组-->
     <!--第一个视图顶部居中,并设置距顶部的外边距-->
-    <Spinner android:id="@+id/color"
+    <Spinner android:id="@+id/lstColor"
              android:layout_width="wrap_content"
              android:layout_height="wrap_content"
              android:layout_alignParentTop="true"
@@ -20,30 +20,31 @@
              android:layout_marginTop="33dp"
              android:entries="@array/beer_colors" />
     <!--指定按钮的单击事件函数-->
-    <Button android:id="@+id/find_beer"
+    <Button android:id="@+id/btnFind"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_alignLeft="@id/color"
-            android:layout_below="@id/color"
+            android:layout_alignStart="@id/lstColor"
+            android:layout_below="@id/lstColor"
             android:text="@string/find_beer"
             android:onClick="onClickFind" />
     <!--当前应显示的文本-->
-    <TextView android:id="@+id/brands"
+    <TextView android:id="@+id/txtBrands"
               android:layout_width="wrap_content"
               android:layout_height="wrap_content"
-              android:layout_alignLeft="@id/find_beer"
-              android:layout_below="@id/find_beer"
-              android:layout_marginTop="18dp"
-              android:text="@string/brands" />
+              android:layout_alignStart="@id/btnFind"
+              android:layout_below="@id/btnFind"
+              android:layout_marginTop="18dp"/>
 
 
     <!--发送意图给其他活动-->
-    <!--ems为设置编辑框的宽度,可容纳10个M字母-->
+    <!--ems 设置编辑框的宽（长）度,可容纳10个M字母-->
     <EditText
         android:id="@+id/message"
+        android:inputType="text"
+        android:hint="@string/hint"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_below="@+id/brands"
+        android:layout_below="@+id/txtBrands"
         android:layout_centerHorizontal="true"
         android:ems="12"/>
     <Button
@@ -51,7 +52,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="1dp"
-        android:layout_alignLeft="@id/message"
+        android:layout_alignStart="@id/message"
         android:layout_below="@id/message"
         android:onClick="onClickSend"
         android:text="@string/send"/>

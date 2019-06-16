@@ -14,7 +14,7 @@ import android.widget.ListView;
  */
 public class WorkListFragment extends ListFragment {
 
-    //片段的监听接口成员
+    //定义一个接口类型和接口成员字段
     private Listener listener;
     interface Listener {
         void itemClicked(long id);
