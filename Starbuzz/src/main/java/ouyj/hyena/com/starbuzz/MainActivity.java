@@ -30,7 +30,7 @@ public class MainActivity extends AppCompatActivity {
                     }
                 };
 
-        //查找列表视并设置单击事件处理
+        //查找列表视并设置单击事件侦听器
         ListView listView = findViewById(R.id.list_options);
         listView.setOnItemClickListener(itemClickListener);
     }

@@ -13,11 +13,11 @@ public class CategoryActivity extends ListActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
 
-        //获取到活动自带的列表视
+        //获取活动类自带的列表视引用
         ListView listDrinks = getListView();
 
-        //从类中得到数组
-        //创建数组适配器（上下文,布局,数组）
+        //为列表视创建数组适配器（非自定义）
+        //创建数组适配器（上下文,项布局,饮料类数组）
         ArrayAdapter<Drink> listAdapter = new ArrayAdapter<>(
                 this,
                 android.R.layout.simple_list_item_1,
@@ -36,7 +36,7 @@ public class CategoryActivity extends ListActivity {
     protected void onListItemClick(ListView l, View v, int position, long id) {
         super.onListItemClick(l, v, position, id);
 
-        //发送意图并传递数据
+        //发送意图并传递数据（启动详情类）
         Intent intent = new Intent(CategoryActivity.this, DetailActivity.class);
         intent.putExtra(DetailActivity.EXTRA_DRINKNO, (int) id);
         startActivity(intent);

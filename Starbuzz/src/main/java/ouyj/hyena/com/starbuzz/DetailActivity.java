@@ -15,8 +15,10 @@ public class DetailActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_detail);
 
-        //取出意图内的数据（得到类对象）
+        //取出意图内的数据
         int drinkNo = (Integer)getIntent().getExtras().get(EXTRA_DRINKNO);
+
+        //从数据源（数组）得到单个类对象
         Drink drink = Drink.drinks[drinkNo];
 
         //设置图像

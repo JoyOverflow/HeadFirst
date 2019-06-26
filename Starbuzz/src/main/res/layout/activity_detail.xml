@@ -6,7 +6,6 @@
     android:layout_height="match_parent"
     android:orientation="vertical"
     tools:context=".DetailActivity">
-
     <ImageView android:id="@+id/photo"
                android:layout_width="190dp"
                android:layout_height="190dp" />
