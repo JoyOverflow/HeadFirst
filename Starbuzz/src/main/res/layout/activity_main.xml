@@ -6,16 +6,13 @@
     android:layout_height="match_parent"
     android:orientation="vertical"
     tools:context=".MainActivity">
-
     <ImageView android:layout_width="200dp"
                android:layout_height="100dp"
                android:src="@drawable/logo"
                android:contentDescription="@string/logo"/>
-
     <ListView android:id="@+id/list_options"
               android:layout_width="match_parent"
               android:layout_height="wrap_content"
               android:entries="@array/options" />
-
 </LinearLayout>
 

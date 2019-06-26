@@ -1,14 +1,14 @@
 package ouyj.hyena.com.starbuzz;
 
 /**
- * 饮料类
+ * 定义饮料类
  */
 public class Drink {
     private String name;
     private String description;
     private int imageId;
 
-    //饮料数组
+    //返回饮料对象的数组
     public static final Drink[] drinks = {
         new Drink(
                 "Latte",
@@ -25,7 +25,7 @@ public class Drink {
     };
 
     /**
-     * 构造方法
+     * 构造方法（名称，描述，图像资源ID）
      * @param name
      * @param description
      * @param imageId

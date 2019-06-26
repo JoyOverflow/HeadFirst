@@ -15,7 +15,6 @@
               android:layout_alignParentTop="true"
               android:layout_centerHorizontal="true"
               android:layout_marginTop="0dp"
-              android:text=""
               android:textAppearance="?android:attr/textAppearanceLarge"
               android:textSize="92sp" />
     <Button android:id="@+id/start_button"

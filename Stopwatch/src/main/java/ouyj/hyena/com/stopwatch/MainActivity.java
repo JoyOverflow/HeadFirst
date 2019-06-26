@@ -12,9 +12,8 @@ public class MainActivity extends AppCompatActivity {
     private int seconds = 0;
     //是否按下计时按钮
     private boolean running;
-    //如果活动被电话中断时中止计数
+    //如果活动被电话中断时中止计数（秒表变为不可见前是否在运行）
     private boolean wasRunning;
-
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -30,7 +29,6 @@ public class MainActivity extends AppCompatActivity {
         //启动计数器
         runTimer();
     }
-
     /**
      * 按钮事件处理
      * @param view
@@ -84,7 +82,6 @@ public class MainActivity extends AppCompatActivity {
             }
         });
     }
-
     /**
      * 设备旋转时保存指定成员变量（使其值在旋转后不变为0）
      * @param outState
@@ -97,14 +94,13 @@ public class MainActivity extends AppCompatActivity {
         outState.putBoolean("running", running);
         outState.putBoolean("wasRunning", wasRunning);
     }
-
     /**
      * 活动被转后台（不可见）或失去焦点（仍可见）时都会调用
      */
     @Override
     protected void onPause() {
         super.onPause();
-        //将当前秒表是否在运行（状态）保存起来，供活动继续时恢复
+        //将当前状态（是否运行）保存起来，供活动继续时恢复
         wasRunning = running;
         //当前暂停秒表的计数
         running = false;
