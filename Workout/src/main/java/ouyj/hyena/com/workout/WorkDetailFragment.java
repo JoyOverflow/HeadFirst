@@ -18,6 +18,11 @@ public class WorkDetailFragment extends Fragment {
     public void setWorkout(long id) {
         this.workId = id;
     }
+    /**
+     * 构造方法
+     */
+    public WorkDetailFragment() {
+    }
 
     /**
      * 通过训练项目ID得到项目类对象
@@ -26,12 +31,12 @@ public class WorkDetailFragment extends Fragment {
     public void onStart() {
         super.onStart();
 
-        //得到片段的根视图
+        //先得到片段的根视图
         View view = getView();
         if (view != null) {
             Workout workout = Workout.workouts[(int) workId];
 
-            //设置视图的文本内容
+            //再设置视图的文本内容
             TextView title =  view.findViewById(R.id.textTitle);
             TextView description =  view.findViewById(R.id.textDescription);
             title.setText(workout.getName());
@@ -39,9 +44,6 @@ public class WorkDetailFragment extends Fragment {
         }
     }
 
-
-    public WorkDetailFragment() {
-    }
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
         return inflater.inflate(R.layout.fragment_work_detail, container, false);

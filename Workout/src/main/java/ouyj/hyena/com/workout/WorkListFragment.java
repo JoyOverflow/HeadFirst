@@ -10,11 +10,11 @@ import android.widget.ArrayAdapter;
 import android.widget.ListView;
 
 /**
- * 列表片段
+ * 创建一个仅包含列表的片段（派生自ListFragment无需布局）
  */
 public class WorkListFragment extends ListFragment {
 
-    //定义一个接口类型和接口成员字段
+    //定义一个接口类型和接口成员字段（初始为null将在与父活动绑定时赋值）
     private Listener listener;
     interface Listener {
         void itemClicked(long id);
@@ -27,7 +27,7 @@ public class WorkListFragment extends ListFragment {
     }
 
     /**
-     * 直接使用基类的布局
+     * 创建片段视图
      * @param inflater
      * @param container
      * @param savedInstanceState
@@ -50,17 +50,16 @@ public class WorkListFragment extends ListFragment {
                 inflater.getContext(),
                 android.R.layout.simple_list_item_1,
                 names);
-
-        //适配器绑定到列表视图
+        //将适配器设置给列表视图
         setListAdapter(adapter);
 
-
+        //直接使用基类的布局
         return super.onCreateView(inflater, container, savedInstanceState);
     }
 
 
     /**
-     * 片段与活动关联
+     * 片段与父活动关联（将父活动实例赋值给片段类接口成员）
      * @param context
      */
     @Override
@@ -70,7 +69,7 @@ public class WorkListFragment extends ListFragment {
         this.listener = (Listener)context;
     }
     /**
-     * 列表视图项被单击时触发
+     * 重写内置的列表项单击事件（执行接口成员的实现方法）
      * @param listView
      * @param itemView
      * @param position

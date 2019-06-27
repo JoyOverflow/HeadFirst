@@ -1,4 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
+<!--布局中使用一个fragment并指定加载WorkDetailFragment-->
 <fragment xmlns:android="http://schemas.android.com/apk/res/android"
           xmlns:tools="http://schemas.android.com/tools"
           class="ouyj.hyena.com.workout.WorkDetailFragment"
