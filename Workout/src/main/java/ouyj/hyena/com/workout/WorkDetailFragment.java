@@ -67,7 +67,7 @@ public class WorkDetailFragment extends Fragment {
 
             //创建片段实例
             WatchFragment watchFragment = new WatchFragment();
-            //启动片段事务（此片段管理器与父片段关联而不与活动关联）
+            //启动子片段事务管理器（此片段事务嵌套在父片段事务中）
             FragmentTransaction ft = getChildFragmentManager().beginTransaction();
             //替换片段并把它增加到后退堆栈
             ft.replace(R.id.stopwatch_container, watchFragment);

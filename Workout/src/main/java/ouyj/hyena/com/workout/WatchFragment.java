@@ -10,18 +10,37 @@ import android.widget.Button;
 import android.widget.TextView;
 
 /**
- * 内嵌详情片段内的片段
+ * 内嵌详情片段内的秒表片段
  */
 public class WatchFragment extends Fragment implements View.OnClickListener{
 
+    //消耗的秒数
     private int seconds = 0;
+    //秒表是否在运行
     private boolean running;
+    //秒表暂停前的状态（是否运行）
     private boolean wasRunning;
 
     public WatchFragment() {
 
     }
-
+    /**
+     * 片段创建时恢复旋转前的保存数据
+     * @param savedInstanceState
+     */
+    @Override
+    public void onCreate(Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
+        if (savedInstanceState != null) {
+            //重建时恢复数据
+            seconds = savedInstanceState.getInt("seconds");
+            running = savedInstanceState.getBoolean("running");
+            wasRunning = savedInstanceState.getBoolean("wasRunning");
+            if (wasRunning) {
+                running = true;
+            }
+        }
+    }
     /**
      * 加载秒表片段布局
      * @param inflater
@@ -31,6 +50,8 @@ public class WatchFragment extends Fragment implements View.OnClickListener{
      */
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
+
+        //加载布局文件
         View layout = inflater.inflate(R.layout.fragment_watch, container, false);
 
         //运行计时器
@@ -65,25 +86,8 @@ public class WatchFragment extends Fragment implements View.OnClickListener{
                 break;
         }
     }
-
     /**
-     * 片段创建时恢复旋转前的保存数据
-     * @param savedInstanceState
-     */
-    @Override
-    public void onCreate(Bundle savedInstanceState) {
-        super.onCreate(savedInstanceState);
-        if (savedInstanceState != null) {
-            seconds = savedInstanceState.getInt("seconds");
-            running = savedInstanceState.getBoolean("running");
-            wasRunning = savedInstanceState.getBoolean("wasRunning");
-            if (wasRunning) {
-                running = true;
-            }
-        }
-    }
-    /**
-     * 旋转前保存必要数据
+     * 设备旋转前保存必要数据
      * @param savedInstanceState
      */
     @Override
@@ -99,12 +103,14 @@ public class WatchFragment extends Fragment implements View.OnClickListener{
     private void runTimer(View view) {
         final TextView timeView = view.findViewById(R.id.time_view);
 
+
         final Handler handler = new Handler();
         handler.post(new Runnable() {
+            //运行于后台线程中
             @Override
             public void run() {
 
-                //将秒数格式化为字串
+                //将秒数格式化为时间字串
                 int hours = seconds / 3600;
                 int minutes = (seconds % 3600) / 60;
                 int secs = seconds % 60;
@@ -120,7 +126,6 @@ public class WatchFragment extends Fragment implements View.OnClickListener{
             }
         });
     }
-
     /**
      * 保存暂停前的运行状态并停止计数
      */
