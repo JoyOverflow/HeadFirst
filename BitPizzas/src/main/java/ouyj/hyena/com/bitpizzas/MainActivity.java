@@ -12,14 +12,13 @@ public class MainActivity extends AppCompatActivity {
 
     private ShareActionProvider shareAction;
 
-
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
     }
     /**
-     * 加载菜单资源
+     * 加载菜单资源（在活动启动时执行）
      * @param menu
      * @return
      */
@@ -41,7 +40,7 @@ public class MainActivity extends AppCompatActivity {
         return super.onCreateOptionsMenu(menu);
     }
     /**
-     * 单击菜单项（返回true表明已处理完单击动作）
+     * 响应菜单项单击（返回true表示已处理完单击动作）
      * @param item
      * @return
      */
